@@ -8,21 +8,34 @@
  *
  * @author Admin
  */
-public class Node {
-    int info;
+class Node {
+
+    Phone info;
     Node next;
 
-    public Node() {
+    Node() {
     }
 
-    public Node(int info, Node next) {
-        this.info = info;
-        this.next = next;
+    Node(Phone x, Node p) {
+        this.info = x; // data stored inside the node
+        this.next = p; // link to the next node
     }
 
-    public Node(int info) {
-        this.info = info;
+    Node(Phone x) {
+        this(x, null);
     }
-    
-    
+}
+
+class Phone {
+
+    String name;
+    int price;
+
+    Phone() {
+    }
+
+    Phone(String n, int p) {
+        this.name = n; // data stored inside the node
+        this.price = p; // link to the next node
+    }
 }
