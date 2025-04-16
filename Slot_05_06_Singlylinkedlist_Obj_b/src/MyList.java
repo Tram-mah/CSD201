@@ -154,7 +154,33 @@ public class MyList {
         ftraverse(f);
         //------------------------------------------------------------------------------------
         //------ Start your code here---------------------------------------------------------
+        if (isEmpty()) {
+            return;
+        }
+        Node p = head, prev = null, maxNode = head, prevMax = null;
+        while (p != null) {
+            if (p.info.price > maxNode.info.price) {
+                maxNode = p;
+                prevMax = prev;
+            }
+            prev = p;
+            p = p.next;
+        }
 
+        // Xóa maxNode
+        if (maxNode == head) {
+            head = head.next;
+            if (head == null) {
+                tail = null;
+            }
+        } else {
+            prevMax.next = maxNode.next;
+            if (maxNode == tail) {
+                tail = prevMax;
+            }
+        }
+        size--;
+        //?? vẫn chưa xóa trùng lập
         //------ End your code here-----------------------------------------------------------
         //------------------------------------------------------------------------------------
         ftraverse(f);
@@ -174,7 +200,16 @@ public class MyList {
         ftraverse(f);
         //------------------------------------------------------------------------------------
         //------ Start your code here---------------------------------------------------------
-
+        Node p = head;
+        while (p != null) {
+            if (p.info.name.contains("S")) {
+                //double newPrice = p.info.price * 0.9; //10%
+                //p.info.price = (int) newPrice;
+                //có cách ghi ngắn hơn cũng dễ hiểu hơn
+                p.info.price = (int) (p.info.price * 0.9); 
+            }
+            p = p.next;
+        }
         //------ End your code here-----------------------------------------------------------
         //------------------------------------------------------------------------------------
         ftraverse(f);
