@@ -106,14 +106,14 @@ public class MyList {
         String phone = sc.nextLine();
         System.out.print("Enter price of phone: ");
         int price = sc.nextInt();
-        addFirst(phone,price);
+        addFirst(phone, price);
         //------ End your code here-----------------------------------------------------------
         //------------------------------------------------------------------------------------
         ftraverse(f);
         f.close();
     }
 
-    // f3: ham computeSum ==> tinh tong gia tri cua tat ca cac Phone co trong list
+    // f3: hàm computeSum => tính tổng giá trị của tất cả các Phone có trong list
     void f3() throws Exception {
         clear();
         loadData(0);
@@ -126,7 +126,15 @@ public class MyList {
         ftraverse(f);
         //------------------------------------------------------------------------------------
         //------ Start your code here---------------------------------------------------------
-
+        // 8 + 3 + 5 + 9 + 9 + 2 + 1
+        //computeSum = 37
+        int sum = 0;
+        Node p = head;
+        while (p != null) {
+            sum += p.info.price;
+            p = p.next;
+        }
+        f.writeBytes("Total price = " + sum + "\r\n");
         //------ End your code here-----------------------------------------------------------
         //------------------------------------------------------------------------------------
         ftraverse(f);
