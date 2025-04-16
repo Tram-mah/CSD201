@@ -97,7 +97,7 @@ public class MyList {
         this.traverse();
     }
 
-    //Phương thức f3: ham addPos => thêm node vào vị trí thứ k, trong đó new node
+    //Phương thức f3: hàm addPos => thêm node vào vị trí thứ k, trong đó new node
     //và chỉ số k được nhập từ bàn phím
     void f3() {
         System.out.println(" ");
