@@ -88,7 +88,7 @@ public class MyList {
         f.close();
     }
 
-    // f2: ham addFirst ==> du lieu nhap tu ban phim
+    // f2: hàm addFirst => dữ liệu nhập từ bàn phím
     void f2() throws Exception {
         clear();
         loadData(0);
@@ -101,7 +101,12 @@ public class MyList {
         ftraverse(f);
         //------------------------------------------------------------------------------------
         //------ Start your code here---------------------------------------------------------
-
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter your phone: ");
+        String phone = sc.nextLine();
+        System.out.print("Enter price of phone: ");
+        int price = sc.nextInt();
+        addFirst(phone,price);
         //------ End your code here-----------------------------------------------------------
         //------------------------------------------------------------------------------------
         ftraverse(f);
