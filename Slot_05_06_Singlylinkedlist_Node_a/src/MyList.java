@@ -1,5 +1,4 @@
 
-
 import java.io.File;
 import java.io.RandomAccessFile;
 import java.util.Scanner;
@@ -128,30 +127,30 @@ public class MyList {
             g123.delete();
         }
         RandomAccessFile f = new RandomAccessFile(fname, "rw");
-        
+
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter your value: ");
         int x = sc.nextInt();
         System.out.println("Enter poison k to add(0 to " + size + "): ");
         int k = sc.nextInt();
-        
-        if(k == 0){
+
+        if (k == 0) {
             addFirst(x);
-        }else if(k==size){
+        } else if (k == size) {
             addLast(x);
-        }else{
+        } else {
             Node newNode = new Node(x);
             Node p = head;
             //Tranverse to the node before position k
             for (int i = 0; i < k - 1; i++) {
-                p=p.next;
+                p = p.next;
             }
             //Insert 
             newNode.next = p.next;
             p.next = newNode;
             size++;
         }
-                
+
         ftraverse(f);
         f.close();
     }
@@ -166,11 +165,16 @@ public class MyList {
             g123.delete();
         }
         RandomAccessFile f = new RandomAccessFile(fname, "rw");
-        
-        if(head!=null){
+
+        if (!isEmpty()) {
             head = head.next;
+            if (head == null) {
+                tail = null;
+            }
+            //vì có thêm thằng size nên phải giải quyết size giảm đi như nào
+            size--;
         }
-        
+
         ftraverse(f);
         f.close();
     }
@@ -185,30 +189,25 @@ public class MyList {
             g123.delete();
         }
         RandomAccessFile f = new RandomAccessFile(fname, "rw");
-        //------------------------------------------------------------------------------------
-        //------ Start your code here---------------------------------------------------------
 
-        //------ End your code here-----------------------------------------------------------
-        //------------------------------------------------------------------------------------
-        ftraverse(f);
-        f.close();
+        if (!isEmpty()) {
+            if (size == 1) {
+                head = tail = null;
+                size = 0;
+            }else{
+                Node p = head;
+                for (int i = 0; i < size - 2; i++) {
+                    p=p.next;
+                }
+                System.out.println(p.info);
+//                System.out.println(size);
+                tail = p;
+                p.next = null;
+                size--;
+            }
+
+            ftraverse(f);
+            f.close();
+        }
     }
 }
-
-
-
-
-//if (head != null) {
-//            // If there is only one element
-//            if (head.next == null) {
-//                head = null;
-//            } else {
-//                // find the second last node
-//                Node secondLast = head;
-//                while (secondLast.next.next != null) {
-//                    secondLast = secondLast.next;
-//                }
-//                // remove last node
-//                secondLast.next = null;
-//            }
-//        }
