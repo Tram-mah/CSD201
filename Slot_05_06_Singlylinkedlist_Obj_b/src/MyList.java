@@ -53,7 +53,7 @@ public class MyList {
         if(isEmpty()){
             head = tail = q;
         }else{
-            q.next = head;
+            q.next = head; 
             head = q;
         }
         size++;
@@ -170,6 +170,7 @@ public class MyList {
         ftraverse(f);
         //------------------------------------------------------------------------------------
         //------ Start your code here---------------------------------------------------------
+        /* 
         if (isEmpty()) {
             return;
         }
@@ -196,6 +197,44 @@ public class MyList {
             }
         }
         size--;
+        */
+        
+        if(isEmpty()){
+            f.writeBytes("The list is empty \r\n");
+            
+        }else{
+            //Tìm giá đắt nhất
+            Node p = head;
+            int maxPrice = p.info.price;
+            
+            while(p!=null){
+                if(p.info.price>maxPrice){
+                    maxPrice = p.info.price;
+                }
+                p=p.next;
+            }
+            //Xóa Max node đi
+            if(head.info.price == maxPrice){
+                head = head.next;
+                if(head==null){
+                    tail = null; 
+                }
+            }else{
+                Node prev = head;
+                Node p1 = head.next;
+                while(p1!=null && p1.info.price != maxPrice){
+                    prev = p1;
+                    p1 = p1.next;
+                }
+                if(p1!=null){
+                    prev.next = p1.next;// thay thế cái P thành prev
+                    if(p1 == tail){
+                        tail = prev; //prev trước p sẽ trở thành tail
+                    }
+                }
+            }
+        }
+        
         //------ End your code here-----------------------------------------------------------
         //------------------------------------------------------------------------------------
         ftraverse(f);
