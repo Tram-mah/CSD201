@@ -47,11 +47,14 @@ public class MyList {
     void addFirst(String n, int p) {
         //------------------------------------------------------------------------------------
         //------ Start your code here---------------------------------------------------------
-        Phone newphone = new Phone(n, p);
-        Node q = new Node(newphone, head);
+        Phone newPhone = new Phone (n,p);
+        Node q = new Node (newPhone,head);
         head = q;
-        if (tail == null) {
-            tail = q;
+        if(isEmpty()){
+            head = tail = q;
+        }else{
+            q.next = head;
+            head = q;
         }
         size++;
         //------ End your code here-----------------------------------------------------------
@@ -70,6 +73,20 @@ public class MyList {
             tail = q;
         }
         size++;
+        
+        //Giả sử không có tail và size
+        /*
+        if(isEmpty()){
+            head = newNode;
+        }else{
+            Node p1 = head;
+            while (p1.next!=null){
+                p1 = p1.next;
+            }
+            p1.next = newNode;
+        }
+        */
+
         //------ End your code here-----------------------------------------------------------
         //------------------------------------------------------------------------------------
     }
@@ -124,20 +141,19 @@ public class MyList {
         }
         RandomAccessFile f = new RandomAccessFile(fname, "rw");
         ftraverse(f);
+        int sum = 0;
         //------------------------------------------------------------------------------------
         //------ Start your code here---------------------------------------------------------
         // 8 + 3 + 5 + 9 + 9 + 2 + 1
         //computeSum = 37
-        int sum = 0;
         Node p = head;
         while (p != null) {
             sum += p.info.price;
             p = p.next;
         }
-        f.writeBytes("Total price = " + sum + "\r\n");
         //------ End your code here-----------------------------------------------------------
         //------------------------------------------------------------------------------------
-        ftraverse(f);
+        f.writeBytes("Total price = " + sum + "\r\n");
         f.close();
     }
 
@@ -180,7 +196,6 @@ public class MyList {
             }
         }
         size--;
-        //?? vẫn chưa xóa trùng lập
         //------ End your code here-----------------------------------------------------------
         //------------------------------------------------------------------------------------
         ftraverse(f);
@@ -206,7 +221,7 @@ public class MyList {
                 //double newPrice = p.info.price * 0.9; //10%
                 //p.info.price = (int) newPrice;
                 //có cách ghi ngắn hơn cũng dễ hiểu hơn
-                p.info.price = (int) (p.info.price * 0.9); 
+                p.info.price = (int) (p.info.price * 0.9);
             }
             p = p.next;
         }
