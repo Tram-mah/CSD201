@@ -1,0 +1,5 @@
+trước 10p nộp bài
+1 mở file run -> phải chuột ra teminal 
+-> gõ java -jar (name).jar -> ra đc bảng là OK
+2 Nộp bài là khi vô file đó phải gặp Q1 phải có src với run
+3 file run chứa Q1.jar
