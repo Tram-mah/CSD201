@@ -56,9 +56,9 @@ public class MyList {
     void addLast(int id, String name, int price) {
         //------------------------------------------------------------------------------------
         //------ Start your code here---------------------------------------------------------
+        if (price > 0) {
         Phone newPhone = new Phone(id, name, price);
         Node newNode = new Node(newPhone);
-        if (newPhone.price > 0) {
             if (isEmpty()) {
                 head = tail = newNode;
             } else {

@@ -1,9 +1,11 @@
+
+import java.util.LinkedList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Admin
@@ -20,8 +22,9 @@ public class MyQueue {
         return this.head == null;
     }
 
-    public void enqueue(int key) {
-        Node newNode = new Node(key);
+    public void enqueue(String id, String name, int age, double gpa) {
+        Student newStudent = new Student(id, name, age, gpa);
+        Node newNode = new Node(newStudent);
 
         if (isEmpty()) {
             head = tail = newNode;
@@ -32,9 +35,9 @@ public class MyQueue {
     }
 
     //lấy ra và xóa
-    public int dequeue() {
+    public Student dequeue() {
         if (!isEmpty()) {
-            int x = head.info;
+            Student x = head.info;
             head = head.next;
 
             if (head == null) {
@@ -42,26 +45,46 @@ public class MyQueue {
             }
             return x;
         } else {
-            return Integer.MIN_VALUE;
+            return null;
         }
     }
 
     // chỉ lấy ra không xóa
-    public int front() {
+    public Student front() {
         if (!isEmpty()) {
-            int x = head.info;
+            Student x = head.info;
             return x;
         } else {
-            return Integer.MIN_VALUE;
+            return null;
         }
     }
 
     public void display() {
         Node p = head;
         while (p != null) {
-            System.out.println(p.info+" ");
+            System.out.println(p.info + " ");
             p = p.next;
         }
 
     }
+
+    // Find student with highest GPA 
+    public Student findHighestGPAStudent() {
+        if (isEmpty()) {
+            return null;
+        }
+
+        Node p = head;
+        Student highest = p.info;
+
+        while (p != null) {
+            if (p.info.getGpa() > highest.getGpa()) {
+                highest = p.info;
+            }
+            p = p.next;
+        }
+
+        return highest;
+    }
+
 }

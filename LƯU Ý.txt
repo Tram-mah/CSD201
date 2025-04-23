@@ -4,3 +4,4 @@ trước 10p nộp bài
 2 Nộp bài là khi vô file đó phải gặp Q1 phải có src với run
 3 file run chứa Q1.jar
 4 lưu ý điều kiện nha
+5 check kĩ lại main tránh bị lừa dúi
